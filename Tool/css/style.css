@@ -244,11 +244,11 @@ body {
 }
 .railcrossing
 {
-	background: url('http://localhost:8085/GIS_Trial/css/images/level-crossing.jpg') no-repeat;
+	background: url('../css/images/level-crossing.jpg') no-repeat;
 }
 .tollbooth
 {
-	background: url('http://localhost:8085/GIS_Trial/css/images/barrier.jpg') no-repeat;
+	background: url('../css/images/barrier.jpg') no-repeat;
 }
 
 /* instruction signs*/
