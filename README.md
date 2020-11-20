@@ -4,5 +4,5 @@ A GIS utility to identify the hurdles before surveying the route for movement of
 ### Screenshots
 1. Overall
 ![Full Screen View](https://github.com/apanasara/GIS_Logistic_Pre-Route-Survey/blob/main/Example/Full%20Screen.JPG)
-2. Entity can be fitered for analysis as well as hyperlink to Open Street Map for detailed analysis
+2. Entity can be fitered for analysis as well as hyperlink to Open Street Map in sticky-tooltip for detailed analysis
 ![Entity](https://github.com/apanasara/GIS_Logistic_Pre-Route-Survey/blob/main/Example/Filtering%20Feature%20Tunnel.JPG)
