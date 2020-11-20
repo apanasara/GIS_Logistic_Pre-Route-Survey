@@ -1,0 +1,365 @@
+body {
+	
+}
+
+.lead {
+	font-size: 20px;
+}
+
+#main,#vrp-map-wrapper {
+	margin: auto;
+	width: 1000px;
+	font-family: Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#main li {
+	line-height: 22px;
+}
+
+a {
+	text-decoration: none;
+	color: #3872f2;
+}
+
+a:hover {
+	color: #3091f7;
+}
+
+#button-list {
+	padding: 10px;
+}
+
+#button-list button, #example-list button {
+	margin: 5px;
+}
+
+#example-list {
+	float: left;
+	max-width: 190px;
+	margin-top: 10px;
+}
+
+#vrp-map {
+	float: right;
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
+
+.leaflet-div-icon {
+	background: transparent;
+	border: none;
+}
+
+.leaflet-marker-icon .number {
+	position: relative;
+	top: -37px;
+	font-size: 12px;
+	width: 25px;
+	text-align: center;
+}
+
+#enter_key {
+	padding-top: 10px;
+	float: right;
+	margin:auto;
+}
+
+#custom_key_input {
+	width: 340px;
+}
+
+#custom_key_enabled {
+	margin-bottom: -5px;
+}
+
+#vrp-error {
+	color: red;
+	font-weight: bold;
+}
+
+#vrp-error,#vrp-response {
+	padding: 10px;
+}
+
+.clear {
+	clear: both;
+}
+
+.hide {
+	display: none;
+}
+
+#custom_key_desc li {
+	list-style-type: none;
+	padding-right: 20px;
+}
+
+#logo img {
+	padding-bottom: 0px;
+	height: 66px;
+	width: 124px;
+	border: none;
+}
+
+#get_key_link {
+	padding: 5px;
+}
+
+#instructions-header {
+	padding: 10px;
+}
+
+#instructions {
+	font-size: small;
+}
+
+.tab-content {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.small {
+	font-size: small;
+}
+
+#mynavigation {
+	border-top-color: white;
+	background-color: white;
+	margin-bottom: 0px;
+	background-image: linear-gradient(to bottom, white, #e7e7e7);
+	border-radius: 4px;
+	font-size: 0;
+	list-style-type: none;
+	margin: 5px 0px;
+	padding: 0;
+}
+
+#mynavigation li a {
+	color: black;
+}
+
+#mynavigation li:first-child {
+	border-left: medium none;
+	border-radius: 4px 0 0 4px;
+}
+
+#mynavigation li {
+	
+}
+
+#mynavigation li {
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #888;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 16px;
+	padding-left: 1.1em;
+	padding-right: 1.1em;
+	padding-bottom: 0.2em;
+	text-shadow: 0 1px 1px #f7f7f7;
+}
+
+#mynavigation {
+	list-style-type: none;
+}
+
+#mynavigation .current {
+	border-bottom: 3px inset black;
+}
+
+#geocoding-map 
+{
+	margin-top: 10px;
+}
+
+#main>*:not(#routing):not(#logo)
+{
+	visibility: hidden;
+	padding: 0px;
+	margin: 0px;
+	height: 0px;
+}
+
+body {
+	min-Width: 95vw;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+#main {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	width: 100%;
+	margin-top: 10px;
+}
+
+#routing {
+	margin-top: 10px;
+}
+
+#routing-response {
+	z-index: 10;
+	/*position: absolute;
+	right: 0;
+	top: 0;*/
+	padding-left: 30px;
+	padding-top: 20px;
+}
+
+
+/*added*/
+.divmarker div
+{
+	border: 1px #bbb;
+    background-color: white;
+    box-shadow: 5px 7px 7px #ccc;
+    width:40px;
+    height:40px;
+    background-size: contain;
+    position: relative;
+    border-radius: .4em;
+}
+
+.divmarker div::after
+{
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-top-color: white;
+	border-bottom: 0;
+	margin-left: -10px;
+	margin-bottom: -10px;
+}
+.railcrossing
+{
+	background: url('http://localhost:8085/GIS_Trial/css/images/level-crossing.jpg') no-repeat;
+}
+.tollbooth
+{
+	background: url('http://localhost:8085/GIS_Trial/css/images/barrier.jpg') no-repeat;
+}
+
+/* instruction signs*/
+
+.instruction div
+{
+    width:30px;
+    height:30px;
+    background-image: url(images/direction-signs.png);   
+}
+.instruction .i-3{background-position:-190px 0;}
+.instruction .i-2{background-position:-230px 0;}
+.instruction .i2{background-position:-84px 0;}
+.instruction .i3{background-position:-42px 0;}
+.instruction .i6{background-position:-340px 0;}
+
+/*stroke coloring*/
+
+.leaflet-bridge-pane path
+{
+	stroke: #0000ff;
+    stroke-opacity: 0.8;
+    stroke-width: 10;
+}
+.leaflet-powerline-pane path
+{
+	stroke: #000080;
+    stroke-opacity: 0.4;
+    stroke-width: 5;
+    stroke-dasharray: 7,6;
+}
+.leaflet-waterway-pane path
+{
+	stroke: #00CCFF;
+    stroke-opacity: 0.6;
+    stroke-width: 5;
+}
+.leaflet-railway-pane path
+{
+	stroke: #000000;
+    stroke-opacity: 0.4;
+    stroke-width: 5;
+    stroke-linecap: butt;
+    stroke-dasharray: 5, 2;
+}
+.leaflet-tunnel-pane path
+{
+	stroke: #ff0000;
+    stroke-opacity: 0.6;
+    stroke-width: 10;
+}
+
+/* collapsible details section*/
+.details
+{
+	display:none;
+	margin: 5px;
+}
+
+.details ~ section
+{
+  padding:10px;
+  background-color:LightYellow;
+  display:none;
+  border: 3px solid Gold;
+  top:-1px;
+}
+.details:checked + a + section
+{
+  display:block;
+}
+.details + a{text-decoration:none;}
+.details + a > label 
+{
+  color:DarkSlateGrey;
+  background-color:Khaki;
+  padding : 7px;
+  display:inline-block;
+  font-weight:bold;
+  text-transform: capitalize;
+  font:'Calibri';
+}
+.details + a > label:hover 
+{
+	background-color:Gold;
+}
+.details:checked + a > label 
+{
+  background-color:Gold;
+  border: 1px 1px 0 solid grey;
+  z-index:10;
+}
+.details + a > label::before 
+{
+  content: ' \25BA';
+  padding : 5px 5px 5px 0;
+  display:inline-block;
+  font-weight:normal;
+}
+.details:checked + a > label::before 
+{
+  content: ' \25BC';
+}
+
+/*iframe slider*/
+.slider
+{
+	position:absolute;
+	width : 200px;
+	right:-200px;
+	top:0px;
+	float:right;
+}
+

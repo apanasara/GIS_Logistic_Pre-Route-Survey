@@ -1,0 +1,270 @@
+<html>
+
+
+<head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>     
+        <title>iRoute-Survey</title>
+        <link rel="icon" href="img/marker-icon-red.png"/>
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
+        <link rel="stylesheet" href="css/leaflet.css?v=1.3.1" />
+        <script type="text/javascript" src="js/leaflet.js?v=1.3.1"></script>
+
+        <link rel="stylesheet" href="css/style.css" />
+
+        <script type="text/javascript" src="js/bouncemarker.js"></script>
+        <script type="text/javascript" src="dist/graphhopper-client.js?v=0.9.0-4"></script>
+        
+        <!-- map matching currently needs togeojson.js -->
+        <script type="text/javascript" src="js/togeojson.js"></script>
+
+
+        <script type="text/javascript" src="js/demo.js?v=0.9.0-4"></script>
+        
+        <!-- added from GitHub for Leaflet-Overpass Wrapper -->
+        <script type="text/javascript" src="dist/osmtogeojson.js"></script>
+       <!--  <script type="text/javascript" src="dist/OverPassLayer.bundle.js"></script>
+        <link rel="stylesheet" href="dist/OverPassLayer.css" /> -->
+        
+   </head>
+ 
+<body>
+	<div id="main">
+		
+		<div id="logo" class="left">
+			<a href="https://graphhopper.com" style="float: left;"> <img src="img/logo.png"alt="Route Analyser" />
+			</a>
+
+			<div class="left" style="margin-right: 20 px;">	
+				<div id="routing-response"></div>
+			</div>
+
+			<div id="enter_key">
+				<div>
+					GrassHopper API Key<br/>
+					<input id="custom_key_input"
+						placeholder="Enter your API key"
+						Value="23e61bd0-0e61-4035-9baa-cffe533f101d" />
+					<button id="custom_key_button">Set</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="routing" class="tab-content">
+
+			<div style="padding-bottom: 0px;">
+				<form id="GISForm" action="" display="block" style="margin-bottom: 0px;"></form>
+			</div>
+			<div id="routing-response-1" style = "display:none;"></div>
+			<div id="routing-error" style="float: left; padding-left: 20px;">
+			</div>
+
+			<div id="routing-map"
+				style="cursor: default; height: 600px; width: 100%;"></div>
+
+			<div id="instructions-header">
+				Click to see instructions for route
+				<div id="instructions" class="hide"></div>
+				
+			</div>
+			<div id="server-response"></div>
+			<br />
+
+		</div>
+<div style="display:none;">
+		<div id="enter_key_hide">
+			<div>
+				<img id="custom_key_enabled" class="hide" src="img/included.png"
+					alt="using custom API key" /> <input id="custom_key_input"
+					placeholder="Enter your API key"
+					Value="23e61bd0-0e61-4035-9baa-cffe533f101d" />
+				<button id="custom_key_button">Set</button>
+			</div>
+			<ul id="custom_key_desc" class="small right">
+				<li><a href="https://graphhopper.com/#directions-api"><b>Free
+							Sign Up</b></a></li>
+				<li><a
+					href="https://github.com/graphhopper/directions-api-js-client">Fork
+						this at Github</a></li>
+				<li><a href="https://graphhopper.com/api/1/docs">Directions
+						API Documentation</a></li>
+			</ul>
+		
+		
+		<h2 class="left">Directions API Live Examples</h2>
+
+		<div class="clear"></div>
+		<div class="horizontal">
+			<ul id="mynavigation" class="tabs-menu">
+				<li class="current"><a href="#routing">Routing API</a></li>
+				<li><a href="#optimization">Route Optimization API</a></li>
+				<li><a href="#geocoding">Geocoding API</a></li>
+				<li><a href="#map-matching">Map Matching API</a></li>
+				<li><a href="#isochrone">Isochrone API</a></li>
+				<li><a href="#matrix">Matrix API</a></li>
+			</ul>
+		</div>
+		</div>
+</div>
+
+<div style="display:none;">
+		<div id="optimization" class="tab-content">
+			<div>
+				The Route Optimization API gets several locations and vehicles as
+				input and calculates the best route for every of the vehicles, where
+				several constraints like capacity or time windows can be added.
+				Click on the map to add locations and then click 'optimize' or just
+				on one of the examples. Or use our more advanced <a
+					href="https://graphhopper.com/dashboard/#/editor">route editor</a>
+				in the dashboard.
+			</div>
+
+			<div id="button-list" class="right">
+				vehicles: <input id="optimize_vehicles" style="max-width: 60px"
+					type="number" min="1" max="4" value="2" />
+				<button id="optimize_button">Optimize</button>
+				<button id="vrp_clear_button">Clear</button>
+			</div>
+
+			<div class="clear"></div>
+			<div id="vrp-map-wrapper">
+				<div id="vrp-map"
+					style="cursor: default; height: 550px; width: 800px;"></div>
+
+				<div id="example-list">
+					<div>
+						<button id="set_example_vrp">Set Vehicle Routing</button>
+					</div>
+					<div>
+						<button id="set_example_tsp">Set Salesman</button>
+					</div>
+					<div>
+						<button id="set_example_tsp2">Set Open Salesman</button>
+					</div>
+					<!--
+                        <div>
+                            <button id="set_example_us_tour">Set Beauty US Tour</button>
+                        </div>
+                        <div>
+                            <button id="set_example_uk_tour">Set Election Campaign UK</button>
+                        </div>
+                        -->
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div id="vrp-error" style="float: right; padding-left: 20px;">
+			</div>
+
+			<div id="vrp-response" style="float: right; padding-left: 20px;">
+			</div>
+		</div>
+
+		<div id="geocoding" class="tab-content">
+			<div>The Geocoding API converts address text into coordinates
+				shown on the map or try "reverse geocoding" via clicking on the map.
+			</div>
+			<br /> <input id="geocoding_text_field" type="text"
+				placeholder="Your address" /> <input id="geocoding_search_button"
+				type="button" value="Search" />
+			<div id="geocoding-error"></div>
+			<div id="geocoding-response"></div>
+			<div id="geocoding-map"
+				style="cursor: default; height: 550px; width: 1000px;"></div>
+
+		</div>
+
+		<div id="map-matching" class="tab-content">
+			<div>The Map Matching API snaps measured GPS tracks to the
+				digital road network using a certain vehicle. Click on the examples
+				and zoom to see the detailed GPX track (black line) and what the Map
+				Matching API calculated from it (green line).</div>
+			<br />
+			<button id="bike_example1">Bike Example</button>
+			<button id="car_example1">Car Example</button>
+			<br /> <br />
+			<div id="map-matching-response"></div>
+			<div id="map-matching-error"></div>
+
+			<div id="map-matching-map"
+				style="cursor: default; height: 600px; width: 1000px;"></div>
+		</div>
+
+		<div id="matrix" class="tab-content">
+			<div>The Matrix API calculates distances or times between many
+				locations E.g. 1 to 5 or 4 to 4 like in the following example. Click
+				on the produced links to see the actual route on GraphHopper Maps.</div>
+			<br />
+			<form>
+				<div>
+					<input class="point" type="text" value="52.651395,13.15567">
+				</div>
+				<div>
+					<input class="point" type="text" value="52.432572,13.143539">
+				</div>
+				<div>
+					<input class="point" type="text" value="52.43299,13.461571">
+				</div>
+				<div>
+					<input class="point" type="text" value="52.622226,13.381233">
+				</div>
+
+				<input id="matrix_search_button" type="button" value="Search">
+			</form>
+
+			<div id="matrix-response"></div>
+
+			<div id="matrix-error"></div>
+		</div>
+
+		<div id="isochrone" class="tab-content">
+
+			<div style="padding-bottom: 10px;">The Isochrone API calculates
+				the reach of a location. Calculate the it via clicking on the map.
+				The inner area is reachable within 5 minutes (green) and the outer
+				area is reachable within 10 minutes (blue).</div>
+			<br />
+
+			<div id="isochrone-response"
+				style="float: right; padding-left: 20px;"></div>
+			<div id="isochrone-error" style="float: right; padding-left: 20px;">
+			</div>
+
+			<div id="isochrone-map"
+				style="cursor: default; height: 600px; width: 1000px;"></div>
+		</div>
+	</div>
+</div>
+	<!-- Piwik -->
+	<script type="text/javascript">
+            PIWIK = false;
+            if (PIWIK) {
+                var _paq = _paq || [];
+                _paq.push(['trackPageView']);
+                _paq.push(['enableLinkTracking']);
+                (function () {
+                    var u = (("https:" == document.location.protocol) ? "https" : "http") + "://graphhopper.com/piwik/";
+                    _paq.push(['setTrackerUrl', u + 'piwik.php']);
+                    _paq.push(['setSiteId', 1]);
+                    var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                    g.type = 'text/javascript';
+                    g.defer = true;
+                    g.async = true;
+                    g.src = u + 'piwik.js';
+                    s.parentNode.insertBefore(g, s);
+                })();
+            }
+        </script>
+	<noscript>
+		<p>
+			<img src="https://graphhopper.com/piwik/piwik.php?idsite=1"
+				style="border: 0;" alt="" />
+		</p>
+	</noscript>
+	<!-- End Piwik Code -->
+	<ul id="custom_key_desc" class="small right">
+		<li><a href="https://graphhopper.com/#directions-api"><b>Free Sign Up for Grasshopper Routing Key</b></a></li>
+		<li><a href="https://graphhopper.com/api/1/docs">Directions API Documentation</a></li>
+	</ul>
+</body>
+</html>
